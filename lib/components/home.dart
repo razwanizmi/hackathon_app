@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'training_list.dart';
 import './videos_page.dart';
+import './meetups.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -10,7 +11,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   int _currentIndex = 0;
   final List<Widget> _children = <Widget>[
-    Placeholder(color: Colors.deepPurple),
+    Meetups(),
     Videos(),
     TrainingList(),
   ];
@@ -46,20 +47,6 @@ class _HomeState extends State<Home> {
         ],
         onTap: onTabTapped,
       ),
-    );
-  }
-}
-
-// TODO: Remove placeholder with actual components.
-class Placeholder extends StatelessWidget {
-  final Color color;
-
-  Placeholder({this.color});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: color,
     );
   }
 }
