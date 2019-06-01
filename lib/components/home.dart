@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'training_list.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -10,7 +11,7 @@ class _HomeState extends State<Home> {
   final List<Widget> _children = <Widget>[
     Placeholder(color: Colors.deepPurple),
     Placeholder(color: Colors.teal),
-    Placeholder(color: Colors.blueGrey),
+    TrainingList(),
   ];
 
   void onTabTapped(int index) {
