@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'training_list.dart';
+import './videos_page.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -10,7 +11,7 @@ class _HomeState extends State<Home> {
   int _currentIndex = 0;
   final List<Widget> _children = <Widget>[
     Placeholder(color: Colors.deepPurple),
-    Placeholder(color: Colors.teal),
+    Videos(),
     TrainingList(),
   ];
 
