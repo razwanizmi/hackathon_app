@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
+import 'training_details.dart';
 
 class Training {
 	String title;
@@ -18,9 +19,10 @@ class TrainingList extends StatefulWidget {
 
 class TrainingListState extends State<TrainingList> {
 	final _titleFont = const TextStyle(fontSize: 18.0);
-	final _stubTrainingList = List.generate(10, (i) {
+	final _stubTrainingList = List.generate(6, (i) {
+		var number = i + 1;
 		return Training(
-			'Flutter Training $i', 
+			'Flutter Training $number', 
 			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do'
 		);
 	});
@@ -38,7 +40,7 @@ class TrainingListState extends State<TrainingList> {
 			padding: const EdgeInsets.all(16.0),
 			itemBuilder: (context, i) {
 				if (i >= _stubTrainingList.length) {
-					_stubTrainingList.addAll(List.generate(10, (j) {
+					_stubTrainingList.addAll(List.generate(6, (j) {
 						final newIndex = _stubTrainingList.length + j;
 						return Training(
 							'Flutter Training $newIndex',
@@ -52,12 +54,21 @@ class TrainingListState extends State<TrainingList> {
 	}
 
 	Widget _buildRow(Training training, int randInt) {
-		return Card(
-			child: ListTile(
-				leading: Image.network('https://picsum.photos/id/$randInt/200/300'),
-				title: Text(training.title, style: _titleFont),
-				subtitle: Text(training.desc),
-				isThreeLine: true
+		final imageUrl = 'https://picsum.photos/id/$randInt';
+		return InkWell(
+			onTap: () {
+				Navigator.push(
+					context,
+					MaterialPageRoute(builder: (context) => TrainingDetails(training.title, '$imageUrl/500/300'))
+				);
+			},
+			child: Card(
+				child: ListTile(
+					leading: Image.network('$imageUrl//200/300'),
+					title: Text(training.title, style: _titleFont),
+					subtitle: Text(training.desc),
+					isThreeLine: true
+				)
 			)
 		);
 	}
